@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio académique d'Adrien Picq, étudiant à Toulouse INP–ENSEEIHT.">
+<title>Adrien Picq — Portfolio</title>
+<style>
+:root {
+  --ink: #202b36;
+  --muted: #627080;
+  --paper: #f7f7f4;
+  --surface: #ffffff;
+  --line: #dfe4e7;
+  --accent: #245a58;
+  --accent-soft: #e8f0ed;
+  --warm: #c49b68;
+  --max: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, "Aptos", "Segoe UI", Arial, sans-serif; line-height: 1.65; }
+a { color: inherit; }
+.wrap { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
+header { position: sticky; top: 0; z-index: 10; background: rgba(247,247,244,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+nav { display: flex; justify-content: space-between; align-items: center; min-height: 72px; gap: 24px; }
+.brand { text-decoration: none; font-family: Georgia, serif; font-size: 1.22rem; letter-spacing: -.03em; }
+.brand span { color: var(--accent); }
+.navlinks { display: flex; gap: 23px; flex-wrap: wrap; }
+.navlinks a { font-size: .88rem; text-decoration: none; color: var(--muted); }
+.navlinks a:hover { color: var(--accent); }
+.hero { padding: 94px 0 82px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 64px; }
+.eyebrow { color: var(--accent); font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; }
+h1,h2,h3 { font-weight: 500; line-height: 1.12; }
+h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.3rem, 7vw, 6.1rem); letter-spacing: -.065em; margin: 18px 0 24px; }
+h1 em { color: var(--accent); font-weight: 400; }
+.hero p { max-width: 610px; color: var(--muted); font-size: 1.1rem; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.btn { display: inline-block; border: 1px solid var(--accent); padding: 11px 17px; border-radius: 3px; text-decoration: none; font-size: .9rem; }
+.btn.primary { background: var(--accent); color: white; }
+.btn.secondary { color: var(--accent); }
+.monogram { aspect-ratio: 4 / 5; background: var(--accent); color: #f7f7f4; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+.monogram:before,.monogram:after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; width: 290px; height: 290px; right: -115px; top: 65px; }
+.monogram:after { width: 210px; height: 210px; right: -74px; top: 105px; }
+.monogram .letters { font-family: Georgia,serif; font-size: clamp(5rem, 10vw, 8rem); line-height: 1; letter-spacing: -.1em; position: relative; z-index: 1; }
+.video-section { margin: -18px auto 70px; }
+.video-frame { background: #202b36; padding: 10px; border: 1px solid var(--line); }
+.video-frame video { display: block; width: 100%; max-height: 620px; background: #101820; }
+.video-caption { color: var(--muted); font-size: .9rem; margin: 12px 2px 0; }
+.monogram small { color: #d5e4de; letter-spacing: .14em; text-transform: uppercase; font-size: .7rem; position: relative; z-index: 1; }
+section { padding: 76px 0; border-top: 1px solid var(--line); }
+.section-head { display: grid; grid-template-columns: .55fr 1.45fr; gap: 30px; margin-bottom: 34px; }
+.section-index { color: var(--accent); font-size: .78rem; letter-spacing: .13em; text-transform: uppercase; padding-top: 7px; }
+h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -.045em; margin: 0; }
+.lead { color: var(--muted); max-width: 720px; margin: 14px 0 0; }
+.grid2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); padding: 27px; }
+.card .tag { display: inline-block; color: var(--accent); background: var(--accent-soft); padding: 4px 8px; font-size: .73rem; letter-spacing: .05em; margin-bottom: 15px; }
+.card h3 { font-size: 1.45rem; margin: 0 0 12px; }
+.card p { color: var(--muted); margin: 0 0 14px; }
+.card ul { padding-left: 18px; margin-bottom: 0; }
+.card li { margin: 5px 0; }
+.meta { color: var(--muted); font-size: .85rem; }
+.skills { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.skill { border-top: 2px solid var(--accent); padding: 17px 15px; background: var(--surface); }
+.skill strong { display: block; margin-bottom: 5px; }
+.skill span { font-size: .9rem; color: var(--muted); }
+.timeline { border-left: 1px solid #b8c9c5; margin-left: 7px; padding-left: 27px; }
+.timeline-item { position: relative; padding: 0 0 29px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item:before { content:""; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; position: absolute; left: -32px; top: 7px; }
+.timeline h3 { margin: 0 0 6px; font-size: 1.2rem; }
+.timeline p { margin: 0; color: var(--muted); }
+.callout { padding: 30px; background: var(--accent-soft); border: 1px solid #d5e4de; }
+.callout p { margin: 7px 0 0; color: #4d6663; }
+.pillrow { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+.pill { border: 1px solid var(--line); padding: 7px 11px; border-radius: 2px; background: var(--surface); font-size: .86rem; }
+footer { background: #202b36; color: #f7f7f4; padding: 35px 0; }
+.foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+footer p { margin: 0; color: #c6d0d6; font-size: .88rem; }
+footer a { color: white; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding: 65px 0; gap: 32px; }
+  .monogram { max-width: 330px; aspect-ratio: 5 / 3; }
+  .section-head { grid-template-columns: 1fr; gap: 12px; }
+  .grid2 { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .navlinks { gap: 12px; }
+  .navlinks a { font-size: .78rem; }
+}
+@media (max-width: 430px) {
+  .wrap { width: min(var(--max), calc(100% - 28px)); }
+  nav { align-items: flex-start; padding: 15px 0; flex-direction: column; gap: 10px; }
+  .skills { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap" aria-label="Navigation principale">
+    <a class="brand" href="#accueil">Adrien <span>Picq.</span></a>
+    <div class="navlinks">
+      <a href="#parcours">Parcours & CV</a>
+      <a href="#projet">Projet TIPE</a>
+      <a href="#competences">Compétences</a>
+      <a href="#engagement">CAM & SD</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="wrap hero" id="accueil">
+    <div>
+      <div class="eyebrow">Portfolio académique · ENSEEIHT</div>
+      <h1>Adrien<br><em>Picq.</em></h1>
+      <p>Étudiant ingénieur à Toulouse INP–ENSEEIHT, en filière EEEA. Ce portfolio rassemble mon parcours, mes compétences scientifiques et informatiques, ainsi que les projets qui illustrent ma démarche d’ingénieur.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projet">Découvrir mon projet</a>
+        <a class="btn secondary" href="CV Adrien PICQ.pdf" download>Télécharger mon CV (PDF)</a>
+      </div>
+    </div>
+    <div class="monogram" aria-label="Monogramme AP décoratif">
+      <small>Électronique · Énergie · Automatique</small>
+      <div class="letters">AP</div>
+      <small>Curiosité · Rigueur · Conception</small>
+    </div>
+  </div>
+  <div class="wrap video-section">
+    <div class="section-index">Présentation</div>
+    <div class="video-frame">
+      <video controls playsinline preload="metadata" aria-label="Vidéo de présentation d’Adrien Picq">
+        <source src="IMG_0530_optimisee.mp4" type="video/mp4">
+        Votre navigateur ne prend pas en charge la lecture vidéo.
+      </video>
+    </div>
+    <p class="video-caption">Présentation vidéo · Adrien Picq</p>
+  </div>
+
+  <section id="parcours">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index">01 / Parcours & CV</div>
+        <div>
+          <h2>Une formation scientifique et un engagement sportif.</h2>
+          <p class="lead">Un parcours orienté vers les mathématiques, la physique et l’informatique, aujourd’hui prolongé par la formation d'ingénieur à l'ENSEEIHT.</p>
+          <div class="actions" style="margin-top: 20px;">
+            <a class="btn primary" href="CV Adrien PICQ.pdf" download>Télécharger le CV complet (PDF)</a>
+          </div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Toulouse INP – ENSEEIHT (2026)</h3>
+          <p><strong>Formation ingénieur · EEEA</strong></p>
+          <p>Département Électricité, Énergie électrique et Automatique.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Lycée La Martinière Monplaisir (2024 - 2026)</h3>
+          <p><strong>Classe préparatoire · MPI</strong></p>
+          <p>Mathématiques, Physique et Informatique ; développement de la rigueur et de la résolution de problèmes.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Lycée du Parc | Lyon</h3>
+          <p><strong>Baccalauréat Général (2024)</strong></p>
+          <p>Spécialités Mathématiques et Physique-Chimie (Options : Anglais Euro, Mathématiques expertes).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projet">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index">02 / Projet phare</div>
+        <div>
+          <h2>Mon TIPE : modéliser pour résoudre.</h2>
+          <p class="lead">Cycle et boucle : Variabilité de l'environnement d'apprentissage et limitation du surapprentissage appliquée au jeu <em>Rush Hour</em>.</p>
+        </div>
+      </div>
+      <div class="grid2">
+        <article class="card">
+          <span class="tag">Problématique & Objectifs</span>
+          <h3>L'instabilité de l'environnement d'entraînement permet-elle de réduire le surapprentissage ?</h3>
+          <p>Étude de la résolution de Rush Hour (problème P-SPACE complet) combinant graphes de coups possibles, fonctions du sujet Centrale MPI info 2025 et réseaux de neurones (comparaison témoin vs cobaye dans un environnement changeant).</p>
+        </article>
+        <article class="card">
+          <span class="tag">Ressources & Téléchargements</span>
+          <h3>Fichiers du TIPE</h3>
+          <p>Vous pouvez télécharger les supports de présentation ainsi que le code source complet du projet zippé ci-dessous :</p>
+          <div class="actions" style="margin-top: 15px;">
+            <a class="btn primary" href="TIPE_Rush_Hour_Adrien_Picq.zip" download>Télécharger le code (ZIP)</a>
+            <a class="btn secondary" href="TIPE.pptx" download>Télécharger la présentation (PPTX)</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index">03 / Compétences</div>
+        <div>
+          <h2>Des outils pour construire et analyser.</h2>
+          <p class="lead">Langues, langages et outils mobilisés au cours de ma formation scientifique et informatique.</p>
+        </div>
+      </div>
+      <div class="skills">
+        <div class="skill"><strong>Python</strong><span>Programmation</span></div>
+        <div class="skill"><strong>C</strong><span>Programmation bas niveau</span></div>
+        <div class="skill"><strong>OCaml</strong><span>Programmation fonctionnelle</span></div>
+        <div class="skill"><strong>Anglais (Cambridge C1)</strong><span>Langue vivante</span></div>
+        <div class="skill"><strong>Excel</strong><span>Tableurs et gestion</span></div>
+        <div class="skill"><strong>Algorithmique</strong><span>Conception et résolution</span></div>
+        <div class="skill"><strong>Analyse scientifique</strong><span>Mathématiques et physique</span></div>
+        <div class="skill"><strong>Esprit d'équipe</strong><span>Capitaine de handball, arbitrage</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="engagement">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index">04 / CAM & développement durable</div>
+        <div>
+          <h2>Apprendre, contribuer, mesurer.</h2>
+          <p class="lead">Une réflexion sur les enjeux contemporains du développement durable, de la responsabilité collective et de l’engagement citoyen.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>CAM 2 · Compétences et engagement</strong>
+        <p>Cette rubrique présente les thématiques du module : transition écologique, mesure des connaissances, diversity et inclusion, ainsi que l’engagement citoyen.</p>
+        <div class="pillrow">
+          <span class="pill">Transition écologique</span>
+          <span class="pill">Culture scientifique</span>
+          <span class="pill">Diversité & inclusion</span>
+          <span class="pill">Engagement citoyen</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index">05 / Contact</div>
+        <div>
+          <h2>Entrer en contact.</h2>
+          <p class="lead">Pour échanger au sujet de mon parcours, de mes projets ou de mes travaux académiques.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:adrien.picq@etu.toulouse-inp.fr">M’écrire par e-mail</a>
+            <a class="btn secondary" href="CV Adrien PICQ.pdf" download>Télécharger mon CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div><strong>Adrien Picq</strong><p>Portfolio académique · Toulouse INP–ENSEEIHT</p></div>
+    <p>Un parcours scientifique, des projets et une démarche d’ingénieur.</p>
+  </div>
+</footer>
+</body>
+</html>
