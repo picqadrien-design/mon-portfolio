@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio académique d'Adrien Picq, étudiant à Toulouse INP–ENSEEIHT.">
+<title>Adrien Picq — Portfolio</title>
+<style>
+:root {
+  --ink: #202b36;
+  --muted: #627080;
+  --paper: #f7f7f4;
+  --surface: #ffffff;
+  --line: #dfe4e7;
+  --accent: #245a58;
+  --accent-soft: #e8f0ed;
+  --warm: #c49b68;
+  --max: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, "Aptos", "Segoe UI", Arial, sans-serif; line-height: 1.65; }
+a { color: inherit; }
+.wrap { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
+header { position: sticky; top: 0; z-index: 10; background: rgba(247,247,244,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+nav { display: flex; justify-content: space-between; align-items: center; min-height: 72px; gap: 24px; }
+.brand { text-decoration: none; font-family: Georgia, serif; font-size: 1.22rem; letter-spacing: -.03em; }
+.brand span { color: var(--accent); }
+.navlinks { display: flex; gap: 23px; flex-wrap: wrap; align-items: center; }
+.navlinks a { font-size: .88rem; text-decoration: none; color: var(--muted); }
+.navlinks a:hover { color: var(--accent); }
+.lang-btn {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s, color .15s;
+}
+.lang-btn:hover { background: var(--accent); color: #ffffff; }
+.hero { padding: 94px 0 82px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 64px; }
+.eyebrow { color: var(--accent); font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; }
+h1,h2,h3 { font-weight: 500; line-height: 1.12; }
+h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.3rem, 7vw, 6.1rem); letter-spacing: -.065em; margin: 18px 0 24px; }
+h1 em { color: var(--accent); font-weight: 400; }
+.hero p { max-width: 610px; color: var(--muted); font-size: 1.1rem; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); padding: 11px 17px; border-radius: 3px; text-decoration: none; font-size: .9rem; cursor: pointer; }
+.btn.primary { background: var(--accent); color: white; }
+.btn.secondary { color: var(--accent); background: transparent; }
+.monogram { aspect-ratio: 4 / 5; background: var(--accent); color: #f7f7f4; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+.monogram:before,.monogram:after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; width: 290px; height: 290px; right: -115px; top: 65px; }
+.monogram:after { width: 210px; height: 210px; right: -74px; top: 105px; }
+.monogram .letters { font-family: Georgia,serif; font-size: clamp(5rem, 10vw, 8rem); line-height: 1; letter-spacing: -.1em; position: relative; z-index: 1; }
+.video-section { margin: -18px auto 70px; }
+.video-frame { background: #202b36; padding: 10px; border: 1px solid var(--line); }
+.video-frame video { display: block; width: 100%; max-height: 620px; background: #101820; }
+.video-caption { color: var(--muted); font-size: .9rem; margin: 12px 2px 0; }
+.monogram small { color: #d5e4de; letter-spacing: .14em; text-transform: uppercase; font-size: .7rem; position: relative; z-index: 1; }
+section { padding: 76px 0; border-top: 1px solid var(--line); }
+.section-head { display: grid; grid-template-columns: .55fr 1.45fr; gap: 30px; margin-bottom: 34px; }
+.section-index { color: var(--accent); font-size: .78rem; letter-spacing: .13em; text-transform: uppercase; padding-top: 7px; }
+h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -.045em; margin: 0; }
+.lead { color: var(--muted); max-width: 720px; margin: 14px 0 0; }
+.grid2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.grid3 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); padding: 27px; }
+.card .tag { display: inline-block; color: var(--accent); background: var(--accent-soft); padding: 4px 8px; font-size: .73rem; letter-spacing: .05em; margin-bottom: 15px; }
+.card h3 { font-size: 1.45rem; margin: 0 0 12px; }
+.card p { color: var(--muted); margin: 0 0 14px; }
+.card ul { padding-left: 18px; margin-bottom: 0; }
+.card li { margin: 5px 0; }
+.tipe-resources { margin-top: 30px; background: var(--surface); border: 1px solid var(--line); padding: 30px; }
+.resource-box { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.resource-box:last-child { border-bottom: none; padding-bottom: 0; }
+.meta { color: var(--muted); font-size: .85rem; }
+.skills { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.skill { border-top: 2px solid var(--accent); padding: 17px 15px; background: var(--surface); }
+.skill strong { display: block; margin-bottom: 5px; }
+.skill span { font-size: .9rem; color: var(--muted); }
+.timeline { border-left: 1px solid #b8c9c5; margin-left: 7px; padding-left: 27px; }
+.timeline-item { position: relative; padding: 0 0 29px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item:before { content:""; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; position: absolute; left: -32px; top: 7px; }
+.timeline h3 { margin: 0 0 6px; font-size: 1.2rem; }
+.timeline p { margin: 0; color: var(--muted); }
+.callout { padding: 30px; background: var(--accent-soft); border: 1px solid #d5e4de; }
+.callout p { margin: 7px 0 0; color: #4d6663; }
+.pillrow { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+.pill { border: 1px solid var(--line); padding: 7px 11px; border-radius: 2px; background: var(--surface); font-size: .86rem; }
+footer { background: #202b36; color: #f7f7f4; padding: 35px 0; }
+.foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+footer p { margin: 0; color: #c6d0d6; font-size: .88rem; }
+footer a { color: white; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding: 65px 0; gap: 32px; }
+  .monogram { max-width: 330px; aspect-ratio: 5 / 3; }
+  .section-head { grid-template-columns: 1fr; gap: 12px; }
+  .grid2, .grid3 { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .navlinks { gap: 12px; }
+  .navlinks a { font-size: .78rem; }
+}
+@media (max-width: 430px) {
+  .wrap { width: min(var(--max), calc(100% - 28px)); }
+  nav { align-items: flex-start; padding: 15px 0; flex-direction: column; gap: 10px; }
+  .skills { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap" aria-label="Navigation principale">
+    <a class="brand" href="#accueil">Adrien <span>Picq.</span></a>
+    <div class="navlinks">
+      <a href="#parcours" data-i18n="nav_parcours">Parcours</a>
+      <a href="#projet" data-i18n="nav_projet">Projet</a>
+      <a href="#competences" data-i18n="nav_competences">Compétences</a>
+      <a href="#engagement" data-i18n="nav_engagement">CAM & SD</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <a href="https://www.linkedin.com/in/adrien-picq-a84265393" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <button id="lang-toggle" class="lang-btn" type="button" aria-label="Changer la langue">EN</button>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="wrap hero" id="accueil">
+    <div>
+      <div class="eyebrow" data-i18n="hero_eyebrow">Portfolio académique · ENSEEIHT</div>
+      <h1>Adrien<br><em>Picq.</em></h1>
+      <p data-i18n="hero_desc">Étudiant ingénieur à Toulouse INP–ENSEEIHT, en filière EEEA. Ce portfolio rassemble mon parcours, mes compétences scientifiques et informatiques, ainsi que les projets qui illustrent ma démarche d’ingénieur.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projet" data-i18n="hero_btn_project">Découvrir mon projet</a>
+        <a class="btn secondary" href="#parcours" data-i18n="hero_btn_path">Mon parcours</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/adrien-picq-a84265393" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <div class="monogram" aria-label="Monogramme AP décoratif">
+      <small data-i18n="mono_top">Électronique · Énergie · Automatique</small>
+      <div class="letters">AP</div>
+      <small data-i18n="mono_bottom">Curiosité · Rigueur · Conception</small>
+    </div>
+  </div>
+
+  <div class="wrap video-section">
+    <div class="section-index" data-i18n="video_index">Présentation</div>
+    <div class="video-frame">
+      <video controls playsinline preload="metadata" aria-label="Vidéo de présentation d’Adrien Picq">
+        <source src="IMG_0530_optimisee.mp4" type="video/mp4">
+        <span data-i18n="video_fallback">Votre navigateur ne prend pas en charge la lecture vidéo.</span>
+      </video>
+    </div>
+    <p class="video-caption" data-i18n="video_caption">Présentation vidéo · Adrien Picq</p>
+  </div>
+
+  <section id="parcours">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index" data-i18n="sec1_index">01 / Parcours</div>
+        <div>
+          <h2 data-i18n="sec1_title">Une formation scientifique.</h2>
+          <p class="lead" data-i18n="sec1_lead">Un parcours orienté vers les mathématiques, la physique et l’informatique, aujourd’hui prolongé par la formation d’ingénieur.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Toulouse INP – ENSEEIHT</h3>
+          <p><strong data-i18n="edu1_sub">Formation ingénieur · EEEA</strong></p>
+          <p data-i18n="edu1_desc">Électronique, Énergie électrique et Automatique.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>La Martinière Monplaisir</h3>
+          <p><strong data-i18n="edu2_sub">Classe préparatoire · MPI</strong></p>
+          <p data-i18n="edu2_desc">Mathématiques, physique et informatique ; développement de la rigueur, de l’analyse et de la résolution de problèmes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projet">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index" data-i18n="sec2_index">02 / Projet TIPE</div>
+        <div>
+          <h2 data-i18n="sec2_title">Variabilité de l’environnement d’apprentissage et limitation du surapprentissage : application au jeu Rush Hour.</h2>
+          <p class="lead" data-i18n="sec2_lead">Étude comparative de l'apprentissage par réseaux de neurones appliqués à la résolution algorithmique du casse-tête Rush Hour dans un environnement instable.</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <span class="tag" data-i18n="card1_tag">Problématique & Enjeux</span>
+          <h3 data-i18n="card1_title">Réduire le surapprentissage d'un réseau de neurones</h3>
+          <p data-i18n="card1_desc">L'objectif central est de déterminer dans quelle mesure l'instabilité et la variabilité de l'environnement d'entraînement permettent de réduire le risque de surapprentissage (overfitting) de l'IA, tout en optimisant la complexité algorithmique.</p>
+          <ul>
+            <li data-i18n="card1_li1">Modeliser la grille 6x6, la voiture rouge et les véhicules bloquants.</li>
+            <li data-i18n="card1_li2">Concevoir une base de données de configurations et de parcours optimaux.</li>
+            <li data-i18n="card1_li3">Comparer une IA témoin (environnement fixe) à une IA évoluant dans un environnement instable.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag" data-i18n="card2_tag">Résultats Expérimentaux</span>
+          <h3 data-i18n="card2_title">Niveaux de difficulté & Performances</h3>
+          <p data-i18n="card2_desc">Les expérimentations ont analysé les performances selon le nombre de coups nécessaires à la résolution :</p>
+          <ul>
+            <li data-i18n-html="card2_li1"><strong>Simple (~7 à 15 coups) :</strong> Apprentissage rapide (100 à 300 cycles) avec efficacité similaire des deux approches.</li>
+            <li data-i18n-html="card2_li2"><strong>Moyen (~30 coups) :</strong> Réduction nette du surapprentissage pour l'IA en environnement variable, au prix de 100 cycles d'apprentissage supplémentaires.</li>
+            <li data-i18n-html="card2_li3"><strong>Avancé (~40 coups) :</strong> Atténuation marquée de l'overfitting. L'apprentissage nécessite ~1500 cycles.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Téléchargement des ressources du TIPE -->
+      <div class="tipe-resources">
+        <h3 data-i18n="res_title">Documents & Code source du TIPE</h3>
+        <p class="meta" data-i18n="res_desc">Téléchargez les ressources relatives au projet : présentation du sujet et code source complet des modélisations et réseaux de neurones Python.</p>
+        
+        <div class="resource-box">
+          <div>
+            <strong data-i18n="res1_title">Présentation du TIPE (Diaporama)</strong>
+            <div class="meta" data-i18n="res1_meta">Format PPTX · Présentation complète avec schémas et résultats expérimentaux</div>
+          </div>
+          <a class="btn secondary" href="TIPE.pptx" download="TIPE_Adrien_Picq.pptx" data-i18n="res1_btn">
+            📥 Télécharger le PPTX
+          </a>
+        </div>
+
+        <div class="resource-box">
+          <div>
+            <strong data-i18n="res2_title">Code source du TIPE (.zip)</strong>
+            <div class="meta" data-i18n="res2_meta">Projet Python · Modélisation Rush Hour, Réseau de Neurones, Algorithmes de recherche</div>
+          </div>
+          <a class="btn primary" href="tipe_code_adrien_picq.zip" download="tipe_code_adrien_picq.zip" data-i18n="res2_btn">
+            📦 Télécharger le Projet ZIP
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index" data-i18n="sec3_index">03 / Compétences</div>
+        <div>
+          <h2 data-i18n="sec3_title">Des outils pour construire et analyser.</h2>
+          <p class="lead" data-i18n="sec3_lead">Langages et outils mobilisés au cours de ma formation scientifique et informatique.</p>
+        </div>
+      </div>
+      <div class="skills">
+        <div class="skill"><strong>Python</strong><span data-i18n="skill1_sub">Programmation & Machine Learning</span></div>
+        <div class="skill"><strong>C</strong><span data-i18n="skill2_sub">Programmation bas niveau</span></div>
+        <div class="skill"><strong>OCaml</strong><span data-i18n="skill3_sub">Programmation fonctionnelle</span></div>
+        <div class="skill"><strong>VS Code</strong><span data-i18n="skill4_sub">Environnement de développement</span></div>
+        <div class="skill"><strong>Excel</strong><span data-i18n="skill5_sub">Tableurs et traitement de données</span></div>
+        <div class="skill"><strong data-i18n="skill6_title">Algorithmique</strong><span data-i18n="skill6_sub">Conception et résolution de problèmes</span></div>
+        <div class="skill"><strong data-i18n="skill7_title">Analyse scientifique</strong><span data-i18n="skill7_sub">Mathématiques et physique</span></div>
+        <div class="skill"><strong data-i18n="skill8_title">Travail en équipe</strong><span data-i18n="skill8_sub">Collaboration et organisation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="engagement">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index" data-i18n="sec4_index">04 / CAM & développement durable</div>
+        <div>
+          <h2 data-i18n="sec4_title">Apprendre, contribuer, mesurer.</h2>
+          <p class="lead" data-i18n="sec4_lead">Une réflexion sur les enjeux contemporains du développement durable, de la responsabilité collective et de l’engagement citoyen.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong data-i18n="call_title">CAM 2 · Compétences et engagement</strong>
+        <p data-i18n="call_desc">Cette rubrique présente les thématiques du module : transition écologique, mesure des connaissances, diversité et inclusion, ainsi que l’engagement citoyen.</p>
+        <div class="pillrow">
+          <span class="pill" data-i18n="pill1">Transition écologique</span>
+          <span class="pill" data-i18n="pill2">Culture scientifique</span>
+          <span class="pill" data-i18n="pill3">Diversité & inclusion</span>
+          <span class="pill" data-i18n="pill4">Engagement citoyen</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-index" data-i18n="sec5_index">05 / Contact</div>
+        <div>
+          <h2 data-i18n="sec5_title">Entrer en contact.</h2>
+          <p class="lead" data-i18n="sec5_lead">Pour échanger au sujet de mon parcours, de mes projets ou de mes travaux académiques.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:picqadrien@gmail.com" data-i18n="contact_email">M’écrire par e-mail</a>
+            <a class="btn secondary" href="https://www.linkedin.com/in/adrien-picq-a84265393" target="_blank" rel="noopener noreferrer" data-i18n="contact_linkedin">Profil LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div><strong>Adrien Picq</strong><p data-i18n="foot_sub">Portfolio académique · Toulouse INP–ENSEEIHT</p></div>
+    <p data-i18n="foot_right">Un parcours scientifique, des projets et une démarche d’ingénieur.</p>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  fr: {
+    nav_parcours: "Parcours",
+    nav_projet: "Projet",
+    nav_competences: "Compétences",
+    nav_engagement: "CAM & SD",
+    nav_contact: "Contact",
+    hero_eyebrow: "Portfolio académique · ENSEEIHT",
+    hero_desc: "Étudiant ingénieur à Toulouse INP–ENSEEIHT, en filière EEEA. Ce portfolio rassemble mon parcours, mes compétences scientifiques et informatiques, ainsi que les projets qui illustrent ma démarche d’ingénieur.",
+    hero_btn_project: "Découvrir mon projet",
+    hero_btn_path: "Mon parcours",
+    mono_top: "Électronique · Énergie · Automatique",
+    mono_bottom: "Curiosité · Rigueur · Conception",
+    video_index: "Présentation",
+    video_fallback: "Votre navigateur ne prend pas en charge la lecture vidéo.",
+    video_caption: "Présentation vidéo · Adrien Picq",
+    sec1_index: "01 / Parcours",
+    sec1_title: "Une formation scientifique.",
+    sec1_lead: "Un parcours orienté vers les mathématiques, la physique et l’informatique, aujourd’hui prolongé par la formation d’ingénieur.",
+    edu1_sub: "Formation ingénieur · EEEA",
+    edu1_desc: "Électronique, Énergie électrique et Automatique.",
+    edu2_sub: "Classe préparatoire · MPI",
+    edu2_desc: "Mathématiques, physique et informatique ; développement de la rigueur, de l’analyse et de la résolution de problèmes.",
+    sec2_index: "02 / Projet TIPE",
+    sec2_title: "Variabilité de l’environnement d’apprentissage et limitation du surapprentissage : application au jeu Rush Hour.",
+    sec2_lead: "Étude comparative de l'apprentissage par réseaux de neurones appliqués à la résolution algorithmique du casse-tête Rush Hour dans un environnement instable.",
+    card1_tag: "Problématique & Enjeux",
+    card1_title: "Réduire le surapprentissage d'un réseau de neurones",
+    card1_desc: "L'objectif central est de déterminer dans quelle mesure l'instabilité et la variabilité de l'environnement d'entraînement permettent de réduire le risque de surapprentissage (overfitting) de l'IA, tout en optimisant la complexité algorithmique.",
+    card1_li1: "Modeliser la grille 6x6, la voiture rouge et les véhicules bloquants.",
+    card1_li2: "Concevoir une base de données de configurations et de parcours optimaux.",
+    card1_li3: "Comparer une IA témoin (environnement fixe) à une IA évoluant dans un environnement instable.",
+    card2_tag: "Résultats Expérimentaux",
+    card2_title: "Niveaux de difficulté & Performances",
+    card2_desc: "Les expérimentations ont analysé les performances selon le nombre de coups nécessaires à la résolution :",
+    card2_li1: "<strong>Simple (~7 à 15 coups) :</strong> Apprentissage rapide (100 à 300 cycles) avec efficacité similaire des deux approches.",
+    card2_li2: "<strong>Moyen (~30 coups) :</strong> Réduction nette du surapprentissage pour l'IA en environnement variable, au prix de 100 cycles d'apprentissage supplémentaires.",
+    card2_li3: "<strong>Avancé (~40 coups) :</strong> Atténuation marquée de l'overfitting. L'apprentissage nécessite ~1500 cycles.",
+    res_title: "Documents & Code source du TIPE",
+    res_desc: "Téléchargez les ressources relatives au projet : présentation du sujet et code source complet des modélisations et réseaux de neurones Python.",
+    res1_title: "Présentation du TIPE (Diaporama)",
+    res1_meta: "Format PPTX · Présentation complète avec schémas et résultats expérimentaux",
+    res1_btn: "📥 Télécharger le PPTX",
+    res2_title: "Code source du TIPE (.zip)",
+    res2_meta: "Projet Python · Modélisation Rush Hour, Réseau de Neurones, Algorithmes de recherche",
+    res2_btn: "📦 Télécharger le Projet ZIP",
+    sec3_index: "03 / Compétences",
+    sec3_title: "Des outils pour construire et analyser.",
+    sec3_lead: "Langages et outils mobilisés au cours de ma formation scientifique et informatique.",
+    skill1_sub: "Programmation & Machine Learning",
+    skill2_sub: "Programmation bas niveau",
+    skill3_sub: "Programmation fonctionnelle",
+    skill4_sub: "Environnement de développement",
+    skill5_sub: "Tableurs et traitement de données",
+    skill6_title: "Algorithmique",
+    skill6_sub: "Conception et résolution de problèmes",
+    skill7_title: "Analyse scientifique",
+    skill7_sub: "Mathématiques et physique",
+    skill8_title: "Travail en équipe",
+    skill8_sub: "Collaboration et organisation",
+    sec4_index: "04 / CAM & développement durable",
+    sec4_title: "Apprendre, contribuer, mesurer.",
+    sec4_lead: "Une réflexion sur les enjeux contemporains du développement durable, de la responsabilité collective et de l’engagement citoyen.",
+    call_title: "CAM 2 · Compétences et engagement",
+    call_desc: "Cette rubrique présente les thématiques du module : transition écologique, mesure des connaissances, diversité et inclusion, ainsi que l’engagement citoyen.",
+    pill1: "Transition écologique",
+    pill2: "Culture scientifique",
+    pill3: "Diversité & inclusion",
+    pill4: "Engagement citoyen",
+    sec5_index: "05 / Contact",
+    sec5_title: "Entrer en contact.",
+    sec5_lead: "Pour échanger au sujet de mon parcours, de mes projets ou de mes travaux académiques.",
+    contact_email: "M’écrire par e-mail",
+    contact_linkedin: "Profil LinkedIn",
+    foot_sub: "Portfolio académique · Toulouse INP–ENSEEIHT",
+    foot_right: "Un parcours scientifique, des projets et une démarche d’ingénieur."
+  },
+  en: {
+    nav_parcours: "Education",
+    nav_projet: "Project",
+    nav_competences: "Skills",
+    nav_engagement: "CAM & SD",
+    nav_contact: "Contact",
+    hero_eyebrow: "Academic Portfolio · ENSEEIHT",
+    hero_desc: "Engineering student at Toulouse INP–ENSEEIHT, majoring in EEEA. This portfolio brings together my academic background, my scientific and computer science skills, as well as the projects illustrating my engineering approach.",
+    hero_btn_project: "Discover my project",
+    hero_btn_path: "My background",
+    mono_top: "Electronics · Energy · Control Systems",
+    mono_bottom: "Curiosity · Rigor · Design",
+    video_index: "Presentation",
+    video_fallback: "Your browser does not support video playback.",
+    video_caption: "Video presentation · Adrien Picq",
+    sec1_index: "01 / Education",
+    sec1_title: "A scientific background.",
+    sec1_lead: "An academic path focused on mathematics, physics, and computer science, now continued through engineering studies.",
+    edu1_sub: "Engineering Degree · EEEA",
+    edu1_desc: "Electronics, Electrical Energy, and Automatic Control.",
+    edu2_sub: "Preparatory Class · MPI",
+    edu2_desc: "Mathematics, physics, and computer science; developing rigor, analytical thinking, and problem-solving skills.",
+    sec2_index: "02 / TIPE Research Project",
+    sec2_title: "Learning Environment Variability and Overfitting Mitigation: Application to the Rush Hour Game.",
+    sec2_lead: "Comparative study of neural network learning applied to the algorithmic resolution of the Rush Hour puzzle in an unstable environment.",
+    card1_tag: "Problem Statement & Goals",
+    card1_title: "Reducing neural network overfitting",
+    card1_desc: "The main objective is to determine to what extent instability and variability in the training environment help reduce the risk of AI overfitting, while optimizing algorithmic complexity.",
+    card1_li1: "Model the 6x6 grid, the red car, and blocking vehicles.",
+    card1_li2: "Design a database of board configurations and optimal paths.",
+    card1_li3: "Compare a baseline AI (fixed environment) with an AI trained in an unstable environment.",
+    card2_tag: "Experimental Results",
+    card2_title: "Difficulty Levels & Performance",
+    card2_desc: "Experiments analyzed performance according to the number of moves required to solve the puzzle:",
+    card2_li1: "<strong>Easy (~7 to 15 moves):</strong> Fast training (100 to 300 cycles) with similar efficiency across both approaches.",
+    card2_li2: "<strong>Medium (~30 moves):</strong> Clear reduction in overfitting for the variable-environment AI, at the cost of 100 additional training cycles.",
+    card2_li3: "<strong>Advanced (~40 moves):</strong> Marked mitigation of overfitting. Training requires ~1500 cycles.",
+    res_title: "TIPE Documents & Source Code",
+    res_desc: "Download the resources related to the project: topic presentation and full source code of the Python models and neural networks.",
+    res1_title: "TIPE Presentation (Slides)",
+    res1_meta: "PPTX Format · Complete presentation with diagrams and experimental results",
+    res1_btn: "📥 Download PPTX",
+    res2_title: "TIPE Source Code (.zip)",
+    res2_meta: "Python Project · Rush Hour Modeling, Neural Network, Search Algorithms",
+    res2_btn: "📦 Download ZIP Project",
+    sec3_index: "03 / Skills",
+    sec3_title: "Tools to build and analyze.",
+    sec3_lead: "Languages and tools used throughout my scientific and computer science education.",
+    skill1_sub: "Programming & Machine Learning",
+    skill2_sub: "Low-level programming",
+    skill3_sub: "Functional programming",
+    skill4_sub: "Development environment",
+    skill5_sub: "Spreadsheets and data processing",
+    skill6_title: "Algorithms",
+    skill6_sub: "Design and problem solving",
+    skill7_title: "Scientific Analysis",
+    skill7_sub: "Mathematics and physics",
+    skill8_title: "Teamwork",
+    skill8_sub: "Collaboration and organization",
+    sec4_index: "04 / CAM & Sustainable Development",
+    sec4_title: "Learn, contribute, measure.",
+    sec4_lead: "A reflection on contemporary challenges of sustainable development, collective responsibility, and civic engagement.",
+    call_title: "CAM 2 · Skills and Engagement",
+    call_desc: "This section presents the module's themes: ecological transition, knowledge assessment, diversity and inclusion, as well as civic engagement.",
+    pill1: "Ecological transition",
+    pill2: "Scientific culture",
+    pill3: "Diversity & inclusion",
+    pill4: "Civic engagement",
+    sec5_index: "05 / Contact",
+    sec5_title: "Get in touch.",
+    sec5_lead: "To discuss my background, my projects, or my academic work.",
+    contact_email: "Write me an email",
+    contact_linkedin: "LinkedIn Profile",
+    foot_sub: "Academic Portfolio · Toulouse INP–ENSEEIHT",
+    foot_right: "A scientific background, projects, and an engineering mindset."
+  }
+};
+
+let currentLang = localStorage.getItem("portfolio_lang") || "fr";
+const langBtn = document.getElementById("lang-toggle");
+
+function setLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const key = el.getAttribute("data-i18n-html");
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+  document.documentElement.lang = lang;
+  langBtn.textContent = lang === "fr" ? "EN" : "FR";
+  localStorage.setItem("portfolio_lang", lang);
+}
+
+langBtn.addEventListener("click", () => {
+  currentLang = currentLang === "fr" ? "en" : "fr";
+  setLanguage(currentLang);
+});
+
+setLanguage(currentLang);
+</script>
+</body>
+</html>
